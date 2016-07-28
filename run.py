@@ -35,8 +35,8 @@ def run():
     init_app().run(**config)
 
 if __name__ == '__main__':
-    #update()
 
     run()
 
-    #init_db
+    #init_db()
+    #update()

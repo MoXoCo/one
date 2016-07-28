@@ -12,7 +12,6 @@ def init_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = \
         'sqlite:///{}'.format(db_path)
 
-
     app.secret_key = 'a random string'
 
     db.init_app(app)

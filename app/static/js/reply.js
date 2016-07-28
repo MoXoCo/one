@@ -3,7 +3,8 @@ var insertReply = function(comment) {
     var template = `
         <div class="media">
             <a class="pull-left" href="#">
-                <img class="media-object" src="${ c.img }" alt="">
+                <img class="media-object" src="${ c.img }"
+                    width="80" height="80" alt="">
             </a>
             <div class="media-body">
                 <h4 class="media-heading">${c.username}

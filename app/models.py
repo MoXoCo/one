@@ -1,5 +1,6 @@
 from . import db
-from datetime import datetime
+from mylog import time_print
+import random
 
 
 class Post(db.Model):
@@ -9,7 +10,7 @@ class Post(db.Model):
     title = db.Column(db.String(10))
     img = db.Column(db.String(64))
     content = db.Column(db.String())
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp = db.Column(db.String, default=time_print())
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def save(self):
@@ -21,15 +22,17 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), default='游客')
-    img = db.Column(db.String(64), default='http://placekitten.com/80/80')
+    img = db.Column(db.String(64))
     content = db.Column(db.String())
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp = db.Column(db.String, default=time_print())
     reply_id = db.Column(db.Integer, default=0)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
 
 
     def __init__(self, content):
         self.content = content
+        # self.img = '/static/img/' + str(random.randint(1,3)) + '.jpg'
+        self.img = '/static/img/1.jpg'
 
 
     def save(self):
